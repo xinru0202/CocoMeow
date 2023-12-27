@@ -10,21 +10,32 @@ function App() {
   const [number, setNumber] = useState(0);
   const [buttonPosition, setButtonPosition] = useState(false);
   const timerRef = useRef(null);
+  const [isCloseButtonClicked, setIsCloseButtonClicked] = useState(false);
+const [isCloseButtonMovable, setIsCloseButtonMovable] = useState(false);
+
 
   const moveButton = () => {
-    const x = Math.random() * (window.innerWidth - 85);
-    const y = Math.random() * (window.innerHeight - 48);
-    setButtonPosition({ left: x, top: y });
+    if (isCloseButtonMovable && !isCloseButtonClicked) {
+      const button = document.getElementById("closeButton");
+      if (button) {
+        const x = Math.random() * (window.innerWidth - button.offsetWidth - 48);
+        const y = Math.random() * (window.innerHeight - button.offsetHeight - 28);
+        button.style.left = `${x}px`;
+        button.style.top = `${y}px`;
+      }
+    }
   };
 
   const handleClick = () => {
     clearTimeout(timerRef.current);
     setIsOpen(true);
     setNumber((prevNumber) => prevNumber + 1);
+    setIsCloseButtonClicked(true); // Set the state to true
     timerRef.current = setTimeout(() => {
       setIsOpen(false);
     }, 100);
   };
+  
 
   useEffect(() => {
     return () => {
