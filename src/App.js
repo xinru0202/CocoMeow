@@ -9,7 +9,7 @@ import soundEffect from "../src/Assets/Image/niganma.mp3";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [number, setNumber] = useState(0);
-  const [buttonPosition, setButtonPosition] = useState({ left: 0, top: 0 });
+  const [buttonPosition, setButtonPosition] = useState("");
   const timerRef = useRef(null);
 
   const moveButton = () => {
@@ -95,9 +95,18 @@ function App() {
           <button id="clickButton" onClick={handleClick} className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'>Happy</button>
           <button
             id="closeButton"
-            className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'
+            className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em] md:block hidden'
             style={{ position: 'absolute', left: buttonPosition.left, top: buttonPosition.top }}
             onMouseOver={moveButton}
+          >
+            Close
+          </button>
+
+          <button
+            id="closeButton"
+            className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em] block md:hidden'
+            style={{ position: 'absolute', left: buttonPosition.left, top: buttonPosition.top }}
+            onClick={moveButton}
           >
             Close
           </button>
