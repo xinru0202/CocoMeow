@@ -57,24 +57,24 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const audioElement = document.getElementById("niganmaSound");
+  // useEffect(() => {
+  //   const audioElement = document.getElementById("niganmaSound");
 
-    const playNiganma = () => {
-      if (audioElement) {
-        audioElement.currentTime = 0; // Reset the audio to the beginning before playing
-        audioElement.play().catch(error => {
-          console.error("Failed to play niganma sound:", error);
-        });
-      }
-    };
+  //   const playNiganma = () => {
+  //     if (audioElement) {
+  //       audioElement.currentTime = 0; // Reset the audio to the beginning before playing
+  //       audioElement.play().catch(error => {
+  //         console.error("Failed to play niganma sound:", error);
+  //       });
+  //     }
+  //   };
 
-    document.getElementById("clickButton").addEventListener("click", playNiganma);
+  //   document.getElementById("clickButton").addEventListener("click", playNiganma);
 
-    return () => {
-      document.getElementById("clickButton").removeEventListener("click", playNiganma);
-    };
-  }, []);
+  //   return () => {
+  //     document.getElementById("clickButton").removeEventListener("click", playNiganma);
+  //   };
+  // }, []);
 
   return (
     <div className="App">
@@ -83,16 +83,16 @@ function App() {
         Browser does not support the audio.
       </audio>
 
-      <audio id="niganmaSound" src={soundEffect} type="audio/mp3">
+      {/* <audio id="niganmaSound" src={soundEffect} type="audio/mp3">
         Browser does not support the audio.
-      </audio>
+      </audio> */}
 
       <main className="w-full h-full flex flex-col items-center justify-center">
         <Footer />
         <p className="pt-2 mb-4 text-[3em] font-bold text-white justify-center">{number}</p>
         <img src={isOpen ? open : close} alt="Mouth" className="image mb-4 w-5/6 mx-auto flex justify-center items-center" />
         <div className='flex flex-row w-5/6 justify-center gap-x-12 font-bold text-white mb-6'>
-          <button id="clickButton" onClick={handleClick} className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'>Happy</button>
+          <button id="clickButton" onClick={handleClick} className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'>Click</button>
           <button
             id="closeButton"
             className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em] md:block hidden'
