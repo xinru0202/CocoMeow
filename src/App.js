@@ -4,11 +4,12 @@ import open from "../src/Assets/Image/open.png";
 import close from "../src/Assets/Image/close mouth.png";
 import Footer from "./Footer";
 import backgroundMusic from "../src/Assets/Image/i am a coconut.mp3";
+import soundEffect from "../src/Assets/Image/niganma.mp3";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [number, setNumber] = useState(0);
-  const [buttonPosition, setButtonPosition] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({ left: 0, top: 0 });
   const timerRef = useRef(null);
 
   const moveButton = () => {
@@ -56,6 +57,25 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const audioElement = document.getElementById("niganmaSound");
+
+    const playNiganma = () => {
+      if (audioElement) {
+        audioElement.currentTime = 0; // Reset the audio to the beginning before playing
+        audioElement.play().catch(error => {
+          console.error("Failed to play niganma sound:", error);
+        });
+      }
+    };
+
+    document.getElementById("clickButton").addEventListener("click", playNiganma);
+
+    return () => {
+      document.getElementById("clickButton").removeEventListener("click", playNiganma);
+    };
+  }, []);
+
   return (
     <div className="App">
       <audio id="backgroundMusic" autoPlay loop>
@@ -63,26 +83,21 @@ function App() {
         Browser does not support the audio.
       </audio>
 
+      <audio id="niganmaSound" src={soundEffect} type="audio/mp3">
+        Browser does not support the audio.
+      </audio>
+
       <main className="w-full h-full flex flex-col items-center justify-center">
-          <Footer />
-          <p className="pt-2 mb-4 text-[3em] font-bold text-white justify-center">{number}</p>
+        <Footer />
+        <p className="pt-2 mb-4 text-[3em] font-bold text-white justify-center">{number}</p>
         <img src={isOpen ? open : close} alt="Mouth" className="image mb-4 w-5/6 mx-auto flex justify-center items-center" />
         <div className='flex flex-row w-5/6 justify-center gap-x-12 font-bold text-white mb-6'>
-          <button id="clickButton" onClick={handleClick} className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'>Click</button>
+          <button id="clickButton" onClick={handleClick} className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'>Happy</button>
           <button
             id="closeButton"
-            className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em] md:block hidden'
+            className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'
             style={{ position: 'absolute', left: buttonPosition.left, top: buttonPosition.top }}
             onMouseOver={moveButton}
-          >
-            Close
-          </button>
-
-          <button
-            id="closeButton"
-            className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em] block md:hidden'
-            style={{ position: 'absolute', left: buttonPosition.left, top: buttonPosition.top }}
-            onClick={moveButton}
           >
             Close
           </button>
