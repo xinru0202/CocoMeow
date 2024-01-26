@@ -3,11 +3,11 @@ import './App.css';
 // import open from "../src/Assets/Image/hamster4.png";
 // import close from "../src/Assets/Image/hamster3.png";
 
-import open from "../src/Assets/Image/hamster1.png";
-import close from "../src/Assets/Image/hamster2.png";
+// import open from "../src/Assets/Image/hamster1.png";
+// import close from "../src/Assets/Image/hamster2.png";
 
-// import open from "../src/Assets/Image/cat2.png";
-// import close from "../src/Assets/Image/cat1.png";
+import open from "../src/Assets/Image/cat2.png";
+import close from "../src/Assets/Image/cat1.png";
 import Footer from "./Footer";
 import backgroundMusic from "../src/Assets/Image/i am a coconut.mp3";
 import soundEffect from "../src/Assets/Image/niganma.mp3";
