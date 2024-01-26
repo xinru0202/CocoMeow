@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import './App.css';
-import open from "../src/Assets/Image/open.png";
-import close from "../src/Assets/Image/close mouth.png";
+// import open from "../src/Assets/Image/hamster4.png";
+// import close from "../src/Assets/Image/hamster3.png";
+
+import open from "../src/Assets/Image/hamster1.png";
+import close from "../src/Assets/Image/hamster2.png";
+
+// import open from "../src/Assets/Image/cat2.png";
+// import close from "../src/Assets/Image/cat1.png";
 import Footer from "./Footer";
 import backgroundMusic from "../src/Assets/Image/i am a coconut.mp3";
 import soundEffect from "../src/Assets/Image/niganma.mp3";
@@ -24,7 +30,7 @@ function App() {
     setNumber((prevNumber) => prevNumber + 1);
     timerRef.current = setTimeout(() => {
       setIsOpen(false);
-    }, 100);
+    }, 150);
   };
 
   useEffect(() => {
@@ -90,7 +96,7 @@ function App() {
       <main className="w-full h-full flex flex-col items-center justify-center">
         <Footer />
         <p className="pt-2 mb-4 text-[3em] font-bold text-white justify-center">{number}</p>
-        <img src={isOpen ? open : close} alt="Mouth" className="image mb-4 w-5/6 mx-auto flex justify-center items-center" />
+        <img src={isOpen ? open : close} alt="Mouth" className="image mb-4 w-full mx-auto flex justify-center items-center" />
         <div className='flex flex-row w-5/6 justify-center gap-x-12 font-bold text-white mb-6'>
           <button id="clickButton" onClick={handleClick} className='px-2 py-2 border rounded-lg hover:text-black text-[1.5em]'>Click</button>
           <button
